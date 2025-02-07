@@ -1,4 +1,7 @@
 {% extends 'base.html' %} 
 {% block content %}
   <p>This is the homepage!</p>
+  <h2>{{ weather.city }}</h2>
+  <p>{{ weather.temperature }}</p>
+  <p>{{ weather.description }}</p>
 {% endblock %}
