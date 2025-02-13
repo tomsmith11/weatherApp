@@ -1,9 +1,26 @@
 {% extends 'base.html' %} 
 {% block content %}
-  <p>This is the homepage!</p>
-  {% for weather in weather_data %}
-    <h2>{{ weather.city }}</h2>
-    <p>{{ weather.temperature }}</p>
-    <p>{{ weather.description }}</p>
-  {% endfor %}
+    <p>This is the homepage!</p>
+    <form action='{% url "home" %}' method="POST">
+      {% csrf_token %}
+      <div>
+          <div>
+              {% for field in form %}
+                {{field.lable_tag}}
+                {{field}}
+                {{field.errors}}
+              {% endfor %}
+          </div>
+          <div>
+              <button type="submit">
+                  Add City
+              </button>
+          </div>
+      </div>
+  </form>
+    {% for weather in weather_data %}
+      <h2>{{ weather.city }}</h2>
+      <p>{{ weather.temperature }}</p>
+      <p>{{ weather.description }}</p>
+    {% endfor %}
 {% endblock %}
